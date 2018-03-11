@@ -60,7 +60,8 @@ class Student
       SELECT * FROM students WHERE name = ?
     SQL
 
-    Student.new_from_db(DB[:conn].execute(sql, name))
+    result = DB[:conn].execute(sql, name)
+    Student.new_from_db(result.first)
     end
 
   def update
